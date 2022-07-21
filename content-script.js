@@ -22,7 +22,30 @@ if (document.getElementById("toggleFuriganaId") == null) {
             // start listening for key presses
             document.addEventListener("keydown", checkForKeyF);
             console.log("Toggling now enabled");
-
+            
+            // remove the tooltips that appear on the <a> elements because it's easier to 
+            // use the Google translate extension for Chrome
+            function removeOneTooltip() {
+                var tooltipLinks = document.getElementsByClassName("dicWin");
+                console.log("found " + tooltipLinks.length + " tooltip links");
+                
+                if (tooltipLinks.length > 0) {
+                    var span = document.createElement("SPAN");
+                    span.innerHTML = tooltipLinks[0].innerHTML;
+                    tooltipLinks[0].parentNode.replaceChild(span, tooltipLinks[0]);
+                    // TODO: should I hang on to the unused nodes so I 
+                    // can swap them back in when pressing the F button?
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            
+            // keep removing the tooltips until there aren't any left
+            while (removeOneTooltip()) {
+            }
+            
+            
             // if we got this far, give feedback to the user by flashing the background color
             var prevColor = document.body.style.backgroundColor;
             document.body.style.backgroundColor = "#6ac482"; // greenish

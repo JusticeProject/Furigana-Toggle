@@ -3,7 +3,7 @@
 var sel = window.getSelection();
 if (sel.anchorNode) {
     var currentNode = sel.anchorNode;
-    while (currentNode.tagName != "P") {
+    while (currentNode.tagName != "P" && currentNode.tagName != "H1") {
         currentNode = currentNode.parentNode
     }
     navigator.clipboard.writeText(currentNode.outerHTML);

@@ -1,3 +1,14 @@
+// copy to the clipboard the HTML for any text that is highlighted/selected, 
+// but grab the entire paragraph
+var sel = window.getSelection();
+if (sel.anchorNode) {
+    var currentNode = sel.anchorNode.parentNode;
+    while (currentNode.tagName != "P") {
+        currentNode = currentNode.parentNode
+    }
+    navigator.clipboard.writeText(currentNode.outerHTML);
+}
+
 // Check to make sure we have not already enabled the toggle for this page.
 // The first time this script is run on a page the element will not exist.
 // The second time it's run the element will exist, thus there is no need

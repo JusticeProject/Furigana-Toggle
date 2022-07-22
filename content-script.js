@@ -2,7 +2,7 @@
 // but grab the entire paragraph
 var sel = window.getSelection();
 if (sel.anchorNode) {
-    var currentNode = sel.anchorNode.parentNode;
+    var currentNode = sel.anchorNode;
     while (currentNode.tagName != "P") {
         currentNode = currentNode.parentNode
     }

@@ -24,8 +24,9 @@ if (document.getElementById("toggleFuriganaId") == null) {
 
         var furiganaButton = document.getElementsByClassName(FURIGANA_BUTTON_CLASS)[0];
         if (typeof furiganaButton !== "undefined") {
-            function checkForKeyF(e) {
-                if (e.code == "KeyF") {
+            function checkForKeyF(evt) {
+                // we don't want to toggle when user presses ctrl+F because that's a search
+                if (!evt.ctrlKey && evt.code == "KeyF") {
                     furiganaButton.click();
                 }
             }
